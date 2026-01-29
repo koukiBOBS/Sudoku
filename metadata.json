@@ -1,0 +1,5 @@
+{
+  "name": "Zenith Sudoku",
+  "description": "A modern, aesthetic Sudoku game featuring Smart Hints powered by Google Gemini AI, pencil notes, undo history, and multiple difficulty levels.",
+  "requestFramePermissions": []
+}
