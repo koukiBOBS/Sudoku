@@ -11,7 +11,7 @@ interface BoardProps {
 const Board: React.FC<BoardProps> = ({ grid, selectedCell, onCellClick, highlightNumber }) => {
   return (
     <div className="w-full max-w-md aspect-square bg-slate-800 p-2 sm:p-3 rounded-xl shadow-2xl mx-auto select-none">
-      <div className="grid grid-cols-9 grid-rows-9 h-full w-full bg-slate-300 gap-[1px] border-[2px] border-slate-800">
+      <div className="grid grid-cols-9 grid-rows-[repeat(9,1fr)] h-full w-full bg-slate-300 gap-[1px] border-[2px] border-slate-800">
         {grid.map((row, r) =>
           row.map((cell, c) => {
             const isSelected = selectedCell?.r === r && selectedCell?.c === c;

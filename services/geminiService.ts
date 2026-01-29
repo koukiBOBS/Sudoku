@@ -36,7 +36,7 @@ export const getSmartHint = async (grid: Grid, lang: Language): Promise<HintResp
     `;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
+      model: 'gemini-3-pro-preview',
       contents: prompt,
       config: {
         responseMimeType: "application/json",
@@ -58,8 +58,11 @@ export const getSmartHint = async (grid: Grid, lang: Language): Promise<HintResp
       }
     });
 
-    const jsonText = response.text;
+    let jsonText = response.text;
     if (!jsonText) throw new Error("No response from AI");
+    
+    // Cleanup potential markdown code blocks if the model includes them
+    jsonText = jsonText.replace(/^```json\s*/, "").replace(/\s*```$/, "");
     
     const result = JSON.parse(jsonText);
     
